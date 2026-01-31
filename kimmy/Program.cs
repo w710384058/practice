@@ -5,14 +5,24 @@ class Program
 {
     static void Main()
     {
-        BankAccount acc1 = new BankAccount(100);
-        Console.WriteLine(acc1.Balance);
-        BankAccount acc2 = new BankAccount(-50);
-        Console.WriteLine(acc2.Balance);
+        while (true)
+        {
+            Console.WriteLine("請輸入一個正整數：");
+            string input = Console.ReadLine() ?? "";//左邊如果=null,右邊會直接給空的字串
 
-        acc1.Balance = -999;
-        Console.WriteLine(acc1.Balance);
+            if (!double.TryParse(input, out double value))
+            {
+                Console.WriteLine("請輸入數字");
+                continue;//直接回while(true)
+            }
+            if (value <= 0)
+            {
+                Console.WriteLine("請輸入一個大於零的數字!");
+                continue;
+            }
 
-        Console.ReadLine();
+            Console.WriteLine($"你輸入的數字是{value}");
+            break;
+        }
     } 
 }
